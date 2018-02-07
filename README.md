@@ -1,6 +1,6 @@
 # ![mattermail icon](https://github.com/rodcorsi/mattermail/raw/master/img/icon.png) MatterMail
 
-*MatterMail* is an integration service for [Mattermost](http://www.mattermost.org/), *MatterMail* listen an email box and publish all received emails in channels or users in Mattermost.
+_MatterMail_ is an integration service for [Mattermost](http://www.mattermost.org/), _MatterMail_ listen an email box and publish all received emails in channels or users in Mattermost.
 
 [![Build Status](https://travis-ci.org/rodcorsi/mattermail.svg?branch=master)](https://travis-ci.org/rodcorsi/mattermail)
 [![Coverage Status](https://coveralls.io/repos/github/rodcorsi/mattermail/badge.svg?branch=master)](https://coveralls.io/github/rodcorsi/mattermail?branch=master)
@@ -9,7 +9,7 @@
 
 ## Install
 
-  Download the [Latest Version](https://github.com/rodcorsi/mattermail/releases/latest)
+Download the [Latest Version](https://github.com/rodcorsi/mattermail/releases/latest)
 
 ## Usage
 
@@ -66,29 +66,41 @@ Minimal configuration:
 
 Location where the cache is stored, default value is `./data/`
 
+### Debug
+
+To have full log enable debug mode `"Debug": true`
+
+```javascript
+{
+    "Debug": true,
+    "Directory": "...",
+    "Profiles":[...]
+}
+```
+
 ### Profiles
 
 You can set multiple profiles using different names
 
-| Field             | Type    | Default | Obrigatory         | Information                                                                                              |
-|-------------------|:-------:|---------|:------------------:|----------------------------------------------------------------------------------------------------------|
-| Name              | string  |         | :white_check_mark: | Name of profile, used to log                                                                             |
-| Channels          | array   |         | :white_check_mark: | List of channels where the email will be posted. You can use `#channel` or `@username`                   |
-| Email             | object  |         | :white_check_mark: | Configuration of Email [(details)](https://github.com/rodcorsi/mattermail#email)                         |
-| Mattermost        | object  |         | :white_check_mark: | Configuration of Mattermost [(details)](https://github.com/rodcorsi/mattermail#mattermost)               |
-| MailTemplate      | string  |         |                    | Template used to format message to post [(details)](https://github.com/rodcorsi/mattermail#mailtemplate) |
-| LinesToPreview    | int     | 10      |                    | Number of email lines that will be posted                                                                |
-| Attachment        | boolean | true    |                    | Inform if attachments will be posted in Mattermost                                                       |
-| Disabled          | boolean | false   |                    | Disable this profile                                                                                     |
-| RedirectBySubject | boolean | true    |                    | Inform if redirect email by subject [(details)](https://github.com/rodcorsi/mattermail#redirectbysubject)|
-| Filter            | object  |         |                    | Filter used to redirect email [(details)](https://github.com/rodcorsi/mattermail#filter)                 |
+| Field             |  Type   | Default |     Obrigatory     | Information                                                                                               |
+| ----------------- | :-----: | ------- | :----------------: | --------------------------------------------------------------------------------------------------------- |
+| Name              | string  |         | :white_check_mark: | Name of profile, used to log                                                                              |
+| Channels          |  array  |         | :white_check_mark: | List of channels where the email will be posted. You can use `#channel` or `@username`                    |
+| Email             | object  |         | :white_check_mark: | Configuration of Email [(details)](https://github.com/rodcorsi/mattermail#email)                          |
+| Mattermost        | object  |         | :white_check_mark: | Configuration of Mattermost [(details)](https://github.com/rodcorsi/mattermail#mattermost)                |
+| MailTemplate      | string  |         |                    | Template used to format message to post [(details)](https://github.com/rodcorsi/mattermail#mailtemplate)  |
+| LinesToPreview    |   int   | 10      |                    | Number of email lines that will be posted                                                                 |
+| Attachment        | boolean | true    |                    | Inform if attachments will be posted in Mattermost                                                        |
+| Disabled          | boolean | false   |                    | Disable this profile                                                                                      |
+| RedirectBySubject | boolean | true    |                    | Inform if redirect email by subject [(details)](https://github.com/rodcorsi/mattermail#redirectbysubject) |
+| Filter            | object  |         |                    | Filter used to redirect email [(details)](https://github.com/rodcorsi/mattermail#filter)                  |
 
 #### Email
 
 Email configuration, used to access IMAP server
 
-| Field             | Type    | Default | Obrigatory         | Information                                                        |
-|-------------------|:-------:|---------|:------------------:|--------------------------------------------------------------------|
+| Field             |  Type   | Default |     Obrigatory     | Information                                                        |
+| ----------------- | :-----: | ------- | :----------------: | ------------------------------------------------------------------ |
 | ImapServer        | string  |         | :white_check_mark: | Address of imap server with port number ex: _imap.example.com:143_ |
 | Username          | string  |         | :white_check_mark: | Email address or username used authenticate on email server        |
 | Password          | string  |         | :white_check_mark: | Password used authenticate on email server                         |
@@ -99,21 +111,22 @@ Email configuration, used to access IMAP server
 
 Mattermost configuration
 
-| Field     | Type   | Default | Obrigatory         | Information                                                                                                                |
-|-----------|:------:|---------|:------------------:|----------------------------------------------------------------------------------------------------------------------------|
-| Server    | string |         | :white_check_mark: | Address of mattermost server. Please inform protocol and port if its necessary ex: _<https://mattermost.example.com:8065>_ |
-| Team      | string |         | :white_check_mark: | Team name. You can find teams name by [(URL)](https://github.com/rodcorsi/mattermail#teamchannel)                          |
-| User      | string |         | :white_check_mark: | User used to authenticate on Mattermos server                                                                              |
-| Password  | string |         | :white_check_mark: | Password used to authenticate on Mattermos server                                                                          |
-| UseAPIv3  | string | true    |                    | Set to use Mattermost Api V3                                                                                               |
+| Field    |  Type  | Default |     Obrigatory     | Information                                                                                                                |
+| -------- | :----: | ------- | :----------------: | -------------------------------------------------------------------------------------------------------------------------- |
+| Server   | string |         | :white_check_mark: | Address of mattermost server. Please inform protocol and port if its necessary ex: _<https://mattermost.example.com:8065>_ |
+| Team     | string |         | :white_check_mark: | Team name. You can find teams name by [(URL)](https://github.com/rodcorsi/mattermail#teamchannel)                          |
+| User     | string |         | :white_check_mark: | User used to authenticate on Mattermos server                                                                              |
+| Password | string |         | :white_check_mark: | Password used to authenticate on Mattermos server                                                                          |
+| UseAPIv3 | string | true    |                    | Set to use Mattermost Api V3                                                                                               |
 
 #### MailTemplate
 
 This configuration formats email message using markdown to post on Mattermost.
 The default configuration is `:incoming_envelope: _From: **{{.From}}**_\n>_{{.Subject}}_\n\n{{.Message}}`, in this example when Mattermail receives a message from `john@example.com`, with subject `Hello world` and message body `Hi I'm John`. This email will be formated to:
 
-:incoming_envelope: _From: **john@example.com**_
->_Hello world_
+:incoming\*envelope: \_From: **john@example.com\***
+
+> _Hello world_
 
 Hi I'm John
 
@@ -121,14 +134,14 @@ Hi I'm John
 
 If the option `RedirectBySubject` is `true` the Mattermail will try to redirect an email and post it using the subject, ex:
 
-| Subject                     | Destination                         |
-|-----------------------------|-------------------------------------|
-| [#orders] blah              | channel `orders`                    |
-| [#orders #info] blah        | channel `orders` and `info`         |
-| Fwd [#orders] [#info] blah  | channel `orders` and `info`         |
-| [1234#orders] foo           | channel `orders`                    |
-| [@john] blah                | user `john`                         |
-| [@john #orders] blah        | user `john` and channel `orders`    |
+| Subject                   | Destination                      |
+| ------------------------- | -------------------------------- |
+| [#orders] blah            | channel `orders`                 |
+| [#orders #info] blah      | channel `orders` and `info`      |
+| Fwd [#orders][#info] blah | channel `orders` and `info`      |
+| [1234#orders] foo         | channel `orders`                 |
+| [@john] blah              | user `john`                      |
+| [@john #orders] blah      | user `john` and channel `orders` |
 
 #### Filter
 
@@ -182,4 +195,24 @@ You need [Go](http://golang.org) to build this project
 
 ```bash
 go get github.com/rodcorsi/mattermail
+```
+
+## Bugs
+
+If you encounter any bug, please open a issue with:
+
+* Mattermost version
+* Mattermail log using [debug mode](https://github.com/rodcorsi/mattermail#debug)
+* config.json
+
+Remember to **remove personal data** from log and config.json
+
+## Contribute
+
+If you want to help, please check the [issues](https://github.com/rodcorsi/mattermail/issues) or open a new one to discuss.
+Do not forget to create tests and run the commands bellow before to make a pull request
+
+```bash
+make lint
+make test
 ```
